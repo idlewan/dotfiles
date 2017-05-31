@@ -33,21 +33,28 @@ if not existsDir(dest_config):
   quit "The destination config folder \"" & dest_config & "\" is not a valid folder"
 
 var backup_folder = ""
-proc get_backup_folder() =
+proc backup(dest_folder, filename: string) =
+  # ensure that backup folder is present before copying to it
   if backup_folder.len == 0:
     backup_folder = dest_config / "__backup_" & format(
       getLocalTime(getTime()), "yyyy-MM-dd'_'HH'h'mm"
     )
     createDir(backup_folder)
+  echo "backing up ", filename
+  moveFile(dest_folder / filename, backup_folder / filename)
 
 let ignore_list = @[
   ".git", ".gitignore",
   ".config",
-  ".nimcache",
+  "__nimcache__",
   "link_user_config",
   "link_user_config.nim",
   "link_user_config.nim.cfg",
+  "machine_specific",
   "not_version_controlled"
+]
+let partial_configs = @[
+  ".moc"
 ]
 
 proc create_links(source, destination: string, skip = ignore_list) =
@@ -59,18 +66,25 @@ proc create_links(source, destination: string, skip = ignore_list) =
       echo "skipping ", f.path
       continue
 
+    if f.path in partial_configs:
+      if symlinkExists(dest_file):
+        backup(destination, f.path)
+      createDir(dest_file)
+      create_links(source / f.path, dest_file)
+      continue
+
     if symlinkExists(dest_file):
       let cur_symlink_path = expandSymlink(dest_file)
       let new_symlink_path = expandFilename(source / f.path)
-      if cur_symlink_path == new_symlink_path:
+      if cur_symlink_path == new_symlink_path or (
+          symlinkExists(new_symlink_path) and
+          expandSymlink(new_symlink_path) == cur_symlink_path):
         echo "already good: ", f.path
         continue
 
     if existsFile(dest_file) or existsDir(dest_file) or
          symlinkExists(dest_file):
-      get_backup_folder()
-      echo "backing up ", f.path
-      moveFile(dest_file, backup_folder / f.path)
+      backup(destination, f.path)
 
     echo "creating symlink from ", source / f.path, " to ", dest_file
     createSymlink(source / f.path, dest_file)
