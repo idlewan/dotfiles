@@ -1,0 +1,186 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# font for window titles. ISO 10646 = Unicode
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+# my terminal font
+#font -misc-*-medium-r-*-*-*-90-100-*-*-*-*-*
+
+font -misc-*-medium-r-*-*-*-70-100-*-*-*-*-*
+
+#-misc-*-medium-r-*-*-*-120-75-*-*-60-*-*
+#-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-16
+
+#bindsym Mod4+y border 1pixel
+#bindsym Mod4+y border toggle
+new_window 1pixel
+
+# use Mouse+Mod4 to drag floating windows to their wanted position
+floating_modifier Mod4
+
+# start a terminal
+bindsym Mod4+Return exec i3-sensible-terminal
+bindsym Mod4+e exec i3-sensible-terminal
+bindsym Mod4+Shift+e exec systemctl poweroff
+#bindsym Mod4+o exec xscreensaver-command --lock
+bindsym Mod4+o exec i3lock -c 151c24 -i ~/.lock_wall.png && sleep 1 && xset dpms force off
+bindsym Mod4+semicolon exec yegane
+bindsym Mod4+z exec amixer set Master 5%- unmute
+bindsym Mod4+x exec amixer set Master 5%+ unmute
+#bindsym Mod4+p exec mpc toggle
+#bindsym Mod4+n exec mpc next
+bindsym Mod4+p exec mocp -G
+bindsym Mod4+n exec mocp --next
+bindsym Mod4+b exec transmission-remote-gtk
+bindsym Mod4+y exec thunderbird
+bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
+#bindsym XF86TouchpadOff
+bindsym Mod4+s exec /usr/bin/xbacklight -inc 10
+bindsym Mod4+a exec /usr/bin/xbacklight -dec 5
+
+bindsym XF86Calculator exec i3lock -c 151c24 -d -i ~/.lock_wall.png
+#bindsym XF86AudioRaiseVolume
+#bindsym XF86AudioLowerVolume
+#bindsym XF86AudioMute
+#bindsym XF86HomePage
+#bindsym XF86Mail
+
+# kill focused window
+bindsym Mod4+q kill
+
+# start dmenu (a program launcher)
+bindsym Mod4+d exec dmenu_run -b -l 10 -hist ~/.dmenu.history
+#bindsym Mod4+d exec dmenu_run -b -l 10
+
+# change focus
+bindsym Mod4+h focus left
+bindsym Mod4+j focus down
+bindsym Mod4+k focus up
+bindsym Mod4+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# move focused window
+bindsym Mod4+Shift+h move left
+bindsym Mod4+Shift+j move down
+bindsym Mod4+Shift+k move up
+bindsym Mod4+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# split in horizontal orientation
+bindsym Mod4+g split h
+
+# split in vertical orientation
+bindsym Mod4+v split v
+
+# enter fullscreen mode for the focused container
+bindsym Mod4+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+#bindsym Mod4+s layout stacking
+bindsym Mod4+t layout tabbed
+bindsym Mod4+w layout default
+
+# toggle tiling / floating
+bindsym Mod4+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod4+space focus mode_toggle
+
+# focus the parent container
+#bindsym Mod4+a focus parent
+
+# focus the child container
+#bindsym Mod4+d focus child
+
+# switch to workspace
+bindsym Mod4+1 workspace 1
+bindsym Mod4+2 workspace 2
+bindsym Mod4+3 workspace 3
+bindsym Mod4+4 workspace 4
+bindsym Mod4+5 workspace 5
+bindsym Mod4+6 workspace 6
+bindsym Mod4+7 workspace 7
+bindsym Mod4+8 workspace 8
+bindsym Mod4+9 workspace 9
+bindsym Mod4+0 workspace 10
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move container to workspace 1
+bindsym Mod4+Shift+2 move container to workspace 2
+bindsym Mod4+Shift+3 move container to workspace 3
+bindsym Mod4+Shift+4 move container to workspace 4
+bindsym Mod4+Shift+5 move container to workspace 5
+bindsym Mod4+Shift+6 move container to workspace 6
+bindsym Mod4+Shift+7 move container to workspace 7
+bindsym Mod4+Shift+8 move container to workspace 8
+bindsym Mod4+Shift+9 move container to workspace 9
+bindsym Mod4+Shift+0 move container to workspace 10
+
+# scratchpad
+bindsym Mod4+m move scratchpad
+bindsym Mod4+i scratchpad show
+
+# reload the configuration file
+#bindsym Mod4+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod4+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym Mod4+Shift+q exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h           resize shrink width 10 px or 5 ppt
+        bindsym j           resize grow height 10 px or 5 ppt
+        bindsym k           resize shrink height 10 px or 5 ppt
+        bindsym l           resize grow width 10 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym Mod4+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+        #status_command /home/wan/config_to_save_warwick/i3status.sh
+        mode hide
+        #output LVDS-0
+}
+
+# workplace assignment (use xprop)
+assign [class="^Firefox$"] 1

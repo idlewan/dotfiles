@@ -54,7 +54,9 @@ let ignore_list = @[
   "not_version_controlled"
 ]
 let partial_configs = @[
-  ".moc"
+  ".moc",
+  "filezilla",
+  "ranger"
 ]
 
 proc create_links(source, destination: string, skip = ignore_list) =

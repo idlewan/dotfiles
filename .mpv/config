@@ -1,0 +1,32 @@
+# default configuration that applies to every file
+[default]
+
+#ao=jack
+
+#ao=alsa
+#channels=2
+#vo=vdpau
+#hwdec=vdpau
+#hwdec=vaapi-copy
+hwdec=vaapi
+#vo=vaapi
+vo=opengl
+
+# disable screensaver
+stop-screensaver="yes"
+
+# correct pitch when speed is faster or slower than 1.0
+#af=scaletempo
+
+# skip displaying some frames to maintain A/V sync on slow systems
+#framedrop=yes
+
+
+# precise seeks
+hr-seek=yes
+
+
+# activate deinterlace to reduce artifacts when there is lots of movement
+#vf=vdpaupp=deint=yes
+#:deint-mode=temporal-spatial
+#deinterlace=yes

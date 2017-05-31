@@ -1,0 +1,63 @@
+.gtkstyle-fallback,
+.gtkstyle-fallback:hover,
+.gtkstyle-fallback:active,
+.view,
+iconview, .view text, iconview text, textview text,
+entry, entry:focus,
+button, button:hover,
+modelbutton.flat:checked,
+headerbar,
+.titlebar:not(headerbar),
+.titlebar:backdrop:not(headerbar),
+  headerbar button.titlebutton:hover,
+  .titlebar button.titlebutton:hover,
+.titlebar button.titlebutton:hover,
+.primary-toolbar:not(.libreoffice-toolbar),
+.primary-toolbar button, headerbar button,
+.primary-toolbar button:hover, headerbar button:hover,
+.primary-toolbar .linked:not(.vertical):not(.path-bar).stack-switcher > button, headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button, .primary-toolbar .linked:not(.vertical).path-bar > button, headerbar .linked:not(.vertical).path-bar > button,
+.primary-toolbar spinbutton:not(.vertical) button, headerbar spinbutton:not(.vertical) button, .primary-toolbar spinbutton:not(.vertical) button:disabled, headerbar spinbutton:not(.vertical) button:disabled,
+.primary-toolbar combobox > .linked > button.combo, headerbar combobox > .linked > button.combo,
+menubar,
+.menubar,
+.primary-toolbar entry, headerbar entry,
+.inline-toolbar toolbutton > button,
+.inline-toolbar toolbutton > button:hover,
+row.activatable:active,
+.nemo-window .nemo-window-pane widget.entry
+.nemo-window .primary-toolbar widget.raised.linked:not(.vertical):not(.path-bar) > button,
+.open-document-selector-name-label,
+.marlin-pathbar.pathbar,
+.source-list,
+.source-list.view,
+iconview.source-list
+{
+    color: #000000;
+}
+    notebook > header > tabs > tab {
+    color: #111111;
+}
+.view:selected {
+    color: #ffffff;
+}
+
+.view.progressbar:selected, .view.progressbar:selected:focus, .view.progressbar:focus:selected, .view.progressbar:focus:selected:focus {
+      color: #5294e2;
+      background-color: #ffffff;
+}
+/*
+.background,
+*/
+
+/*
+    treeview.view.progressbar:selected, treeview.view.progressbar:selected:focus, treeview.view.progressbar:focus:selected, treeview.view.progressbar:focus:selected:focus,
+  treeview.view.trough,
+    treeview.view header button:active,
+ */
+
+/*
+.selection-mode.primary-toolbar button:active, headerbar.selection-mode button:active, .selection-mode.primary-toolbar button:checked, headerbar.selection-mode button:checked, row:selected button:active, infobar.info button:active, infobar.question button:active, infobar.warning button:active, infobar.error button:active, .nautilus-window .floating-bar button:active, .selection-mode.primary-toolbar button:hover:active, headerbar.selection-mode button:hover:active, .selection-mode.primary-toolbar button:hover:checked, headerbar.selection-mode button:hover:checked, row:selected button:active:hover, infobar.info button:active:hover, infobar.question button:active:hover, infobar.warning button:active:hover, infobar.error button:active:hover, .nautilus-window .floating-bar button:active:hover, row:selected button:checked, infobar.info button:checked, infobar.question button:checked, infobar.warning button:checked, infobar.error button:checked, .nautilus-window .floating-bar button:checked {
+.scale-popup button:hover {
+.keycap {
+  .nautilus-desktop.nautilus-canvas-item:active, .nemo-desktop.nemo-canvas-item:active, .caja-desktop:active {
+ */

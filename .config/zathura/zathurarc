@@ -1,0 +1,4 @@
+map j navigate next
+map k navigate previous
+#set pages-per-row 2
+set advance-pages-per-row true
