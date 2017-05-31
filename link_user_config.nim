@@ -61,24 +61,26 @@ proc create_links(source, destination: string, skip = ignore_list) =
   echo "==  create links from ", source, " to ", destination, "  =="
   for f in walkDir(source, relative=true):
     let dest_file = destination / f.path
+    var source_file = source / f.path
 
     if f.path in skip:
-      echo "skipping ", f.path
+      echo "    (skipping ", f.path, ")"
       continue
 
     if f.path in partial_configs:
       if symlinkExists(dest_file):
         backup(destination, f.path)
       createDir(dest_file)
-      create_links(source / f.path, dest_file)
+      create_links(source_file, dest_file)
       continue
 
     if symlinkExists(dest_file):
-      let cur_symlink_path = expandSymlink(dest_file)
-      let new_symlink_path = expandFilename(source / f.path)
-      if cur_symlink_path == new_symlink_path or (
-          symlinkExists(new_symlink_path) and
-          expandSymlink(new_symlink_path) == cur_symlink_path):
+      var cur_symlink_path = dest_file
+      while symlinkExists(cur_symlink_path):
+        cur_symlink_path = expandSymlink(cur_symlink_path)
+      cur_symlink_path = expandFilename(cur_symlink_path)
+      let new_symlink_path = expandFilename(source_file)
+      if cur_symlink_path == new_symlink_path:
         echo "already good: ", f.path
         continue
 
@@ -86,8 +88,10 @@ proc create_links(source, destination: string, skip = ignore_list) =
          symlinkExists(dest_file):
       backup(destination, f.path)
 
-    echo "creating symlink from ", source / f.path, " to ", dest_file
-    createSymlink(source / f.path, dest_file)
+    if symlinkExists(source_file):
+      source_file = expandSymlink(source_file)
+    echo "- creating symlink from ", source_file, " to ", dest_file
+    createSymlink(source_file, dest_file)
 
 if not existsDir(dotfiles / ".config"):
   echo "The dotfiles folder doesn't contain a .config folder"
