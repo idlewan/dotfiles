@@ -31,8 +31,7 @@ floating_modifier Mod4
 bindsym Mod4+Return exec i3-sensible-terminal
 bindsym Mod4+e exec i3-sensible-terminal
 bindsym Mod4+Shift+e exec systemctl poweroff
-#bindsym Mod4+o exec xscreensaver-command --lock
-bindsym Mod4+o exec i3lock -c 151c24 -i ~/.lock_wall.png && sleep 1 && xset dpms force off
+bindsym Mod4+o exec lock
 bindsym Mod4+semicolon exec yegane
 bindsym Mod4+z exec amixer set Master 5%- unmute
 bindsym Mod4+x exec amixer set Master 5%+ unmute
@@ -48,7 +47,7 @@ bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
 bindsym Mod4+s exec /usr/bin/xbacklight -inc 10
 bindsym Mod4+a exec /usr/bin/xbacklight -dec 5
 
-bindsym XF86Calculator exec i3lock -c 151c24 -d -i ~/.lock_wall.png
+bindsym XF86Calculator exec lock
 #bindsym XF86AudioRaiseVolume
 #bindsym XF86AudioLowerVolume
 #bindsym XF86AudioMute

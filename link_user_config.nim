@@ -46,7 +46,7 @@ proc backup(dest_folder, filename: string) =
 let ignore_list = @[
   ".git", ".gitignore",
   ".config",
-  "__nimcache__",
+  ".__nimcache__",
   "link_user_config",
   "link_user_config.nim",
   "link_user_config.nim.cfg",
