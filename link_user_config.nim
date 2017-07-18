@@ -56,6 +56,7 @@ let ignore_list = @[
 let partial_configs = @[
   ".moc",
   "filezilla",
+  "fish",
   "ranger"
 ]
 

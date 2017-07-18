@@ -28,8 +28,8 @@ new_window 1pixel
 floating_modifier Mod4
 
 # start a terminal
-bindsym Mod4+Return exec i3-sensible-terminal
-bindsym Mod4+e exec i3-sensible-terminal
+bindsym Mod4+Return exec i3-sensible-terminal -e fish
+bindsym Mod4+e exec i3-sensible-terminal -e fish
 bindsym Mod4+Shift+e exec systemctl poweroff
 bindsym Mod4+o exec lock
 bindsym Mod4+semicolon exec yegane
