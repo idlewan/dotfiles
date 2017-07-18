@@ -24,6 +24,13 @@ set nobackup
 set clipboard=unnamed
 set scrolloff=1
 set autoread
+set breakindent
+set showbreak=^^^
+set synmaxcol=200
+set wildmenu            " visual autocomplete for command menu
+
+" automatically equalize splits when vim is resized
+autocmd VimResized * wincmd =
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=80
@@ -109,10 +116,11 @@ nnoremap <A-0> 0gt
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar.gz
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.tup$\|build\|_build\|_js\|_css$\|nimcache$\|.nimcache$\|node_modules$'
+let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
 
 
-autocmd Filetype pug setlocal ts=2 sw=2
-autocmd Filetype stylus,nim setlocal ts=2 sw=2
+autocmd Filetype pug        setlocal ts=2 sw=2
+autocmd Filetype stylus,nim setlocal ts=2 sw=2 sts=2
 autocmd! BufNewFile,BufRead *.links setlocal filetype=markdown
 "autocmd! BufNewFile,BufRead *.links colorscheme slate
 
