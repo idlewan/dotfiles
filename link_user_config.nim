@@ -57,7 +57,8 @@ let partial_configs = @[
   ".moc",
   "filezilla",
   "fish",
-  "ranger"
+  "ranger",
+  "vifm"
 ]
 
 proc create_links(source, destination: string, skip = ignore_list) =
