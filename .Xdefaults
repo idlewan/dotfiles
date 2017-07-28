@@ -16,7 +16,7 @@ Xft.lcdfilter: lcddefault
 #urxvt*background:	rgba:0000/0000/0200/b000
 urxvt*background:	#000000
 urxvt*foreground:	#FFFFFF
-urxvt*shading: 35
+urxvt*shading: 20
 urxvt*inheritPixmap: true
 
 #urxvt*font:xft:Misc Fixed:style=SemiCondensed:size=10
