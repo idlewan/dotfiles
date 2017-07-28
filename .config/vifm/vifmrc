@@ -1,4 +1,14 @@
+set vicmd=nvim
 set timefmt=" %F %H:%M"
+
+" Natural sort of (version) numbers within text.
+set sortnumbers
+
+set ignorecase
+set smartcase
+
+" Display sorting dialog
+nnoremap S :sort<cr>
 
 " Pdf
 filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
