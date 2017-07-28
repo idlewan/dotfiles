@@ -178,19 +178,6 @@ let g:previm_open_cmd = 'browser_in_background.sh'
 set cursorline
 
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-"let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-let g:syntastic_loc_list_height=10
-nnoremap <C-s> :lclose<C-j>
-
 " have a grey 1-char column at 80 chars
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 set colorcolumn=81

@@ -19,9 +19,6 @@
 [submodule ".config/nvim/bundle/skittles_berry"]
 	path = .config/nvim/bundle/skittles_berry
 	url = git@github.com:idlewan/skittles_berry.git
-[submodule ".config/nvim/bundle/syntastic"]
-	path = .config/nvim/bundle/syntastic
-	url = git@github.com:idlewan/syntastic.git
 [submodule ".config/nvim/bundle/vim-airline"]
 	path = .config/nvim/bundle/vim-airline
 	url = git@github.com:idlewan/vim-airline.git
@@ -46,3 +43,6 @@
 [submodule ".config/nvim/bundle/csapprox"]
 	path = .config/nvim/bundle/csapprox
 	url = git@github.com:idlewan/csapprox.git
+[submodule ".config/nvim/bundle/ale"]
+	path = .config/nvim/bundle/ale
+	url = https://github.com/w0rp/ale
