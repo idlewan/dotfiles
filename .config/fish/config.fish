@@ -8,4 +8,6 @@ set -gx BROWSER /usr/bin/firefox
 
 source ~/.config/fish/other.fish
 
-cd ~/FOLDERS
+if status --is-interactive
+    cd ~/FOLDERS
+end
