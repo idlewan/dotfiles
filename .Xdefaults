@@ -3,6 +3,10 @@ urxvt*saveLines:	4000
 urxvt*internalBorder:	6
 urxvt*cursorBlink:	true
 
+! disable the stupid ctrl+shift 'feature'
+urxvt.iso14755: false
+urxvt.iso14755_52: false
+
 #Xft.dpi: 72
 Xft.dpi: 96
 Xft.antialias: true
