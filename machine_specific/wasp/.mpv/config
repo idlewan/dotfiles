@@ -6,9 +6,9 @@
 #ao=alsa
 #channels=2
 #vo=vdpau
-hwdec=vdpau
+#hwdec=vdpau
 #hwdec=vaapi-copy
-#hwdec=vaapi
+hwdec=vaapi
 #vo=vaapi
 vo=opengl
 
