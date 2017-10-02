@@ -61,28 +61,34 @@ let g:netrw_dirhistmax = 0
 
 execute pathogen#infect()
 
-""" Colorscheme Approximation """
-" This transforms colorschemes to terminal colorschemes
-" The ctermbg=NONE hooks make backgrounds transparent in terminals
-            "\ 'highlight SignColumn        ctermbg=NONE',
-            "\ 'highlight LineNr            ctermbg=NONE',
-let g:CSApprox_hook_post = [
-            \ 'highlight Normal            ctermbg=NONE',
-            \ 'highlight SignifyLineDelete cterm=bold ctermbg=NONE ctermfg=red',
-            \ 'highlight SignifySignDelete cterm=bold ctermbg=NONE ctermfg=red',
-            \ 'highlight SignifyLineAdd    cterm=bold ctermbg=NONE ctermfg=green',
-            \ 'highlight SignifyLineChange cterm=bold ctermbg=NONE ctermfg=yellow',
-            \ 'highlight SignifySignAdd    cterm=bold ctermbg=NONE ctermfg=green',
-            \ 'highlight SignifySignChange cterm=bold ctermbg=NONE ctermfg=yellow',
-            \ 'highlight CursorLine        ctermbg=NONE cterm=underline',
-            \ 'highlight Folded            ctermbg=NONE cterm=bold',
-            \ 'highlight FoldColumn        ctermbg=NONE cterm=bold',
-            \ 'highlight NonText           ctermbg=NONE',
-            \ 'highlight clear LineNr',
-            \
-            \ 'highlight LineNr            ctermbg=236'
-            \]
+if has("gui_running")
+    " gVim
+    set guioptions-=m
+    set guioptions-=T
+else
 
+    """ Colorscheme Approximation """
+    " This transforms colorschemes to terminal colorschemes
+    " The ctermbg=NONE hooks make backgrounds transparent in terminals
+                "\ 'highlight SignColumn        ctermbg=NONE',
+                "\ 'highlight LineNr            ctermbg=NONE',
+    let g:CSApprox_hook_post = [
+                \ 'highlight Normal            ctermbg=NONE',
+                \ 'highlight SignifyLineDelete cterm=bold ctermbg=NONE ctermfg=red',
+                \ 'highlight SignifySignDelete cterm=bold ctermbg=NONE ctermfg=red',
+                \ 'highlight SignifyLineAdd    cterm=bold ctermbg=NONE ctermfg=green',
+                \ 'highlight SignifyLineChange cterm=bold ctermbg=NONE ctermfg=yellow',
+                \ 'highlight SignifySignAdd    cterm=bold ctermbg=NONE ctermfg=green',
+                \ 'highlight SignifySignChange cterm=bold ctermbg=NONE ctermfg=yellow',
+                \ 'highlight CursorLine        ctermbg=NONE cterm=underline',
+                \ 'highlight Folded            ctermbg=NONE cterm=bold',
+                \ 'highlight FoldColumn        ctermbg=NONE cterm=bold',
+                \ 'highlight NonText           ctermbg=NONE',
+                \ 'highlight clear LineNr',
+                \
+                \ 'highlight LineNr            ctermbg=236'
+                \]
+endif
 
 colors skittles_berry
 "colors twilight
