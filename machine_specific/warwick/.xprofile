@@ -1,0 +1,19 @@
+#mpd ~/.mpd/mpd.conf
+
+#setxkbmap -layout us -variant altgr-intl -option 'grp:alt_shift_toggle,ctrl:nocaps,compose:ralt,altwin:swap_alt_win'
+
+# background
+feh --bg-max ~/.config/curwall &
+
+lxqt-notificationd &
+
+numlockx on &
+
+# dual-screen SDL fix
+export SDL_VIDEO_FULLSCREEN_HEAD=0
+
+# VR
+export __GL_SYNC_DISPLAY_DEVICE="DVI-I-3"
+
+# Avoid gnome bug
+export NO_AT_BRIDGE=1

@@ -6,9 +6,9 @@
 #ao=alsa
 #channels=2
 #vo=vdpau
-#hwdec=vdpau
+hwdec=vdpau
 #hwdec=vaapi-copy
-hwdec=vaapi
+#hwdec=vaapi
 #vo=vaapi
 vo=opengl
 
@@ -30,3 +30,8 @@ hr-seek=yes
 #vf=vdpaupp=deint=yes
 #:deint-mode=temporal-spatial
 #deinterlace=yes
+
+
+# subtitles filter
+sub-filter-sdh=yes
+sub-filter-sdh-harder=yes
