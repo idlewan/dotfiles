@@ -122,6 +122,7 @@ let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
 autocmd Filetype pug        setlocal ts=2 sw=2
 autocmd Filetype stylus,nim setlocal ts=2 sw=2 sts=2
 autocmd! BufNewFile,BufRead *.links setlocal filetype=markdown
+autocmd! BufNewFile,BufRead *.mjs   setlocal filetype=javascript
 "autocmd! BufNewFile,BufRead *.links colorscheme slate
 
 " make space execute the 'q' macro (press qq to start recording, q to stop,
@@ -184,3 +185,31 @@ set colorcolumn=81
 "set textwidth=80
 
 set nofoldenable
+
+let g:ale_pattern_options = {
+\   '\.bundle.js$': {'ale_enabled': 0},
+\   '\.min.js$':    {'ale_enabled': 0}
+\}
+
+" avoid escape key
+inoremap jk <Esc>
+inoremap kj <Esc>
+vnoremap jk <Esc>
+vnoremap kj <Esc>
+cnoremap jk <C-c>
+cnoremap kj <C-c>
+
+" clipboard
+map <C-v> "+p
+map <C-c> "+y
+
+" line shortcuts
+nnoremap <C-a> <Home>
+cnoremap <C-a> <Home>
+vnoremap <C-a> <Home>
+nnoremap <C-h> <Home>
+"inoremap <C-h> <Home>
+vnoremap <C-h> <Home>
+nnoremap <C-l> <End>
+inoremap <C-l> <End>
+vnoremap <C-l> <End>

@@ -33,6 +33,10 @@ urxvt*boldFont: xft:Roboto Mono:weight=Bold
 urxvt*font: xft:Misc Fixed-Me:style=Semicondensed:pixelsize=13:autohint=false:antialias=false
 #,xft:Inconsolata for Powerline:pixelsize=13:autohint=true:antialias=true
 
+# add new ways to send escape
+urxvt.keysym.Control-semicolon: \033
+urxvt.keysym.Control-apostrophe: \033
+
 !! euphrasia v2 by bohoomil
 
 ! euphrasia fg/bg
