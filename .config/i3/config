@@ -51,7 +51,7 @@ bindsym $mod+y exec thunderbird
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
 #bindsym XF86TouchpadOff
-bindsym $mod+~ exec /usr/bin/xbacklight -inc 10
+bindsym $mod+grave exec /usr/bin/xbacklight -inc 10
 bindsym $mod+Tab exec /usr/bin/xbacklight -dec 5
 
 bindsym XF86Calculator exec lock
