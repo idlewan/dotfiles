@@ -20,7 +20,8 @@ set expandtab
 set ts=4
 set sw=4
 set sts=4
-set nobackup
+"set nobackup
+set nowritebackup  " writebackup doesn't keep xattr around
 set clipboard=unnamed
 set scrolloff=1
 set autoread
