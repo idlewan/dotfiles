@@ -13,5 +13,5 @@ set REVERSE (tput rev)
 function fish_prompt
     set -l dir (pwd)
     set -l dir (string replace "/home/wan/" "~/" $dir)
-    echo $BLACK_FG$ORANGE_BG (hostname)$ORANGE_FG$YELLOW_BG$BOLD$BLACK_FG$dir$RESET$YELLOW_FG" "
+    echo $BLACK_FG$ORANGE_BG (/usr/bin/hostname)$ORANGE_FG$YELLOW_BG$BOLD$BLACK_FG$dir$RESET$YELLOW_FG" "
 end

@@ -46,3 +46,6 @@
 [submodule ".config/nvim/bundle/ale"]
 	path = .config/nvim/bundle/ale
 	url = https://github.com/w0rp/ale
+[submodule ".config/nvim/bundle/happy_hacking.vim"]
+	path = .config/nvim/bundle/happy_hacking.vim
+	url = https://github.com/YorickPeterse/happy_hacking.vim

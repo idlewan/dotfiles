@@ -5,12 +5,12 @@
 
 #ao=alsa
 #channels=2
-#vo=vdpau
+vo=vdpau
 hwdec=vdpau
 #hwdec=vaapi-copy
 #hwdec=vaapi
 #vo=vaapi
-vo=opengl
+#vo=opengl
 
 # disable screensaver
 stop-screensaver="yes"

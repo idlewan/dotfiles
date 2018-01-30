@@ -91,13 +91,15 @@ else
                 \]
 endif
 
-colors skittles_berry
 "colors twilight
 "colors blackboard
+"colors skittles_berry
+colors happy_hacking
 
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd FileType xml noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 
 " Remove delay on esc key press
 if has('nvim')
@@ -122,8 +124,11 @@ nnoremap <A-9> 9gt
 nnoremap <A-0> 0gt
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar.gz
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.tup$\|build\|_build\|_js\|_css$\|nimcache$\|.nimcache$\|node_modules$'
-let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/](\.(git|hg|svn|tup|__nimcache__|nimcache)|build|_build|_js|_css|nimcache||node_modules)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ }
+"let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
 
 
 autocmd Filetype pug        setlocal ts=2 sw=2
@@ -176,8 +181,8 @@ nnoremap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 nnoremap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 
 " navigate visual lines instead of real ones
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " previm
 let g:previm_open_cmd = 'browser_in_background.sh'
@@ -199,12 +204,12 @@ let g:ale_pattern_options = {
 \}
 
 " avoid escape key
-inoremap jk <Esc>
-inoremap kj <Esc>
-vnoremap jk <Esc>
-vnoremap kj <Esc>
-cnoremap jk <C-c>
-cnoremap kj <C-c>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
+"vnoremap jk <Esc>
+"vnoremap kj <Esc>
+"cnoremap jk <C-c>
+"cnoremap kj <C-c>
 
 " clipboard
 map <C-v> "+p
@@ -220,3 +225,9 @@ vnoremap <C-h> <Home>
 nnoremap <C-l> <End>
 inoremap <C-l> <End>
 vnoremap <C-l> <End>
+
+" window shortcuts
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k

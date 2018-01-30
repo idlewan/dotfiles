@@ -213,6 +213,9 @@ bar {
 assign [class="^Firefox$"] 1
 
 no_focus [title="Dev OpenGL"]
+no_focus [title="Dev GUI"]
+
+for_window [title="Dev GUI"] floating enable
 
 # change focused border color
 client.focused #4c7899 #285577  #ffffff #2e9ef4 #ff0000
