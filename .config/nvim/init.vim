@@ -96,8 +96,8 @@ endif
 "colors skittles_berry
 colors happy_hacking
 
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType javascript,json,typescript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType html,xml,svg noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 autocmd FileType xml noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 
@@ -111,7 +111,8 @@ endif
 
 "nnoremap <C-i> "+po<esc>
 "nnoremap <C-i> 0i<C-j><esc>k"+pddp
-nnoremap <C-i> <esc>o<esc>"+p
+nnoremap <C-i> <esc>o<esc>x"+p
+"inoremap <C-i> <esc>o<esc>x"+p
 nnoremap <A-1> 1gt
 nnoremap <A-2> 2gt
 nnoremap <A-3> 3gt
@@ -125,16 +126,17 @@ nnoremap <A-0> 0gt
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar.gz
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/](\.(git|hg|svn|tup|__nimcache__|nimcache)|build|_build|_js|_css|nimcache||node_modules)$',
-    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'dir': '\v[\/](\.(git|hg|svn|tup|__nimcache__|nimcache)|build|_build|_js|_css|nimcache||node_modules|nope|dist)$',
+    \ 'file': '\v\.(exe|so|dll|meta|prefab|asset|png)$',
     \ }
-"let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
+let g:ctrlp_user_command = '/usr/bin/ag -l --ignore "*\.exe" --ignore "*\.so" --ignore "*\.dll" --ignore "*\.meta" --ignore "*\.prefab" --ignore "*\.asset" --ignore "*\.png" --nocolor -g "" %s'
 
 
 autocmd Filetype pug        setlocal ts=2 sw=2
 autocmd Filetype stylus,nim setlocal ts=2 sw=2 sts=2
 autocmd! BufNewFile,BufRead *.links setlocal filetype=markdown
 autocmd! BufNewFile,BufRead *.mjs   setlocal filetype=javascript
+autocmd! BufNewFile,BufRead *.kit   setlocal filetype=html
 "autocmd! BufNewFile,BufRead *.links colorscheme slate
 
 " make space execute the 'q' macro (press qq to start recording, q to stop,
@@ -202,6 +204,8 @@ let g:ale_pattern_options = {
 \   '\.bundle.js$': {'ale_enabled': 0},
 \   '\.min.js$':    {'ale_enabled': 0}
 \}
+highlight ALEWarning ctermbg=DarkMagenta
+highlight ALEError ctermbg=Black
 
 " avoid escape key
 "inoremap jk <Esc>
@@ -231,3 +235,16 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-l> <C-w>l
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
+
+
+autocmd! BufNewFile,BufRead *.cs   setlocal expandtab! list colorcolumn=100
+
+" for snappy gitgutter updates
+set updatetime=200
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+set autochdir                   " Changes the cwd to the directory of the current
+                                " buffer whenever you switch buffers.
+set browsedir=current           " Make the file browser always open the current
+                                " directory.
