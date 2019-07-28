@@ -1,3 +1,3 @@
 function p -w pacaur --description 'alias p=pacaur'
-	pacaur $argv;
+	pacaur --color=always $argv;
 end
