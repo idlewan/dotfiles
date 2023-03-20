@@ -1,0 +1,83 @@
+diff '--color=auto' -ruN firefox_omni.orig/chrome/browser/content/browser/browser.xhtml firefox_omni/chrome/browser/content/browser/browser.xhtml
+--- firefox_omni.orig/chrome/browser/content/browser/browser.xhtml	2010-01-01 00:00:00.000000000 +0000
++++ firefox_omni/chrome/browser/content/browser/browser.xhtml	2022-01-20 10:33:41.084582157 +0000
+@@ -271,17 +271,25 @@
+     <key id="focusURLBar2" data-l10n-id="location-open-shortcut-alt" command="Browser:OpenLocation"
+          modifiers="alt"/>
+ 
+-    <key id="key_search" data-l10n-id="search-focus-shortcut" command="Tools:Search" modifiers="accel"/>
+-    <key id="key_search2"
+-         data-l10n-id="search-focus-shortcut-alt"
+-         modifiers="accel"
+-         command="Tools:Search"/>
++    <key id="custom_focusURLBar" data-l10n-id="file-open-shortcut" command="Browser:OpenLocation"  modifiers="accel"/>
++    <key id="custom_prevTab" key="k" modifiers="accel" command="Browser:PrevTab" reserved="true"/>
++    <key id="custom_nextTab" key="j" modifiers="accel" command="Browser:NextTab" reserved="true"/>
++    <key id="custom_search" key="/" command="cmd_find"/>
++    <key id="custom_search" key="/" modifiers="accel" command="cmd_find"/>
++    <key id="custom_findAgain" key="n" command="cmd_findAgain"/>
++    <key id="custom_findPrevious" key="n" modifiers="shift" command="cmd_findPrevious"/>
++    <key id="custom_closeSearch" keycode="VK_QUOTE" modifiers="accel" oncommand="gBrowser.getCachedFindBar().close(true);" reserved="true"/>
++    <key id="custom_closeSearch2" data-l10n-id="page-info-shortcut" oncommand="gBrowser.getCachedFindBar().close();" modifiers="accel"/>
++    <key id="custom_focusPage" key=";" modifiers="accel" oncommand="document.activeElement.blur()" reserved="true"/>
++
++    <key id="custom_goBackKb" key="h" modifiers="accel" command="Browser:Back"/>
++    <key id="custom_goForwardKb" key="l" modifiers="accel" command="Browser:Forward"/>
++
+     <key id="key_openDownloads"
+          data-l10n-id="downloads-shortcut"
+          modifiers="accel,shift"
+          command="Tools:Downloads"/>
+     <key id="key_openAddons" data-l10n-id="addons-shortcut" command="Tools:Addons" modifiers="accel,shift"/>
+-    <key id="openFileKb" data-l10n-id="file-open-shortcut" command="Browser:OpenFile"  modifiers="accel"/>
+     <key id="key_savePage" data-l10n-id="save-page-shortcut" command="Browser:SavePage" modifiers="accel"/>
+     <key id="printKb" data-l10n-id="print-shortcut" command="cmd_print"  modifiers="accel"/>
+     <key id="key_close" data-l10n-id="close-shortcut" command="cmd_close" modifiers="accel" reserved="true"/>
+@@ -329,7 +337,6 @@
+     <key data-l10n-id="nav-reload-shortcut" command="Browser:Reload" modifiers="accel" id="key_reload"/>
+     <key data-l10n-id="nav-reload-shortcut" command="Browser:ReloadSkipCache" modifiers="accel,shift" id="key_reload_skip_cache"/>
+     <key id="key_viewSource" data-l10n-id="page-source-shortcut" command="View:PageSource" modifiers="accel"/>
+-    <key id="key_viewInfo" data-l10n-id="page-info-shortcut" command="View:PageInfo"   modifiers="accel"/>
+     <key id="key_find" data-l10n-id="find-shortcut" command="cmd_find" modifiers="accel"/>
+     <key id="key_findAgain" data-l10n-id="search-find-again-shortcut" command="cmd_findAgain" modifiers="accel"/>
+     <key id="key_findPrevious" data-l10n-id="search-find-again-shortcut" command="cmd_findPrevious" modifiers="accel,shift"/>
+@@ -354,11 +361,6 @@
+     <key id="key_stop" keycode="VK_ESCAPE" command="Browser:Stop"/>
+ 
+ 
+-    <key id="key_gotoHistory"
+-         data-l10n-id="history-sidebar-shortcut"
+-         modifiers="accel"
+-         oncommand="SidebarUI.toggle('viewHistorySidebar');"/>
+-
+     <key id="key_fullZoomReduce" data-l10n-id="full-zoom-reduce-shortcut" command="cmd_fullZoomReduce"  modifiers="accel"/>
+     <key                         data-l10n-id="full-zoom-reduce-shortcut-alt-a" command="cmd_fullZoomReduce"  modifiers="accel"/>
+     <key                         data-l10n-id="full-zoom-reduce-shortcut-alt-b" command="cmd_fullZoomReduce"  modifiers="accel"/>
+diff '--color=auto' -ruN firefox_omni.orig/localization/en-US/browser/browserSets.ftl firefox_omni/localization/en-US/browser/browserSets.ftl
+--- firefox_omni.orig/localization/en-US/browser/browserSets.ftl	2010-01-01 00:00:00.000000000 +0000
++++ firefox_omni/localization/en-US/browser/browserSets.ftl	2022-01-20 10:29:55.154449839 +0000
+@@ -21,7 +21,7 @@
+     .key = T
+ 
+ location-open-shortcut =
+-    .key = L
++    .key = VK_QUOTE
+ 
+ location-open-shortcut-alt =
+     .key = D
+diff '--color=auto' -ruN firefox_omni.orig/localization/en-US/devtools/startup/key-shortcuts.ftl firefox_omni/localization/en-US/devtools/startup/key-shortcuts.ftl
+--- firefox_omni.orig/localization/en-US/devtools/startup/key-shortcuts.ftl	2010-01-01 00:00:00.000000000 +0000
++++ firefox_omni/localization/en-US/devtools/startup/key-shortcuts.ftl	2022-01-20 10:19:06.596870070 +0000
+@@ -2,10 +2,10 @@
+ devtools-commandkey-toggle-toolbox = I
+ devtools-commandkey-toggle-toolbox-f12 = VK_F12
+ devtools-commandkey-browser-toolbox = I
+-devtools-commandkey-browser-console = J
++devtools-commandkey-browser-console = VK_F11
+ devtools-commandkey-responsive-design-mode = M
+ devtools-commandkey-inspector = C
+-devtools-commandkey-webconsole = K
++devtools-commandkey-webconsole = VK_F10
+ devtools-commandkey-jsdebugger = Z
+ devtools-commandkey-netmonitor = E
+ devtools-commandkey-styleeditor = VK_F7
