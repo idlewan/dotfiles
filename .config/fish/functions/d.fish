@@ -1,3 +1,4 @@
-function d -w youtube-dl
-	youtube-dl $argv
+function d -w yt-dlp
+    #youtube-dl $argv
+	yt-dlp --restrict-filenames $argv
 end

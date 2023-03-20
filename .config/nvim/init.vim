@@ -94,12 +94,15 @@ endif
 "colors twilight
 "colors blackboard
 "colors skittles_berry
-colors happy_hacking
+"colors happy_hacking
+colors fahrenheit
 
-autocmd FileType javascript,json,typescript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript,typescript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 autocmd FileType html,xml,svg noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 autocmd FileType xml noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+command FormatJSON %!jq .
+autocmd FileType json noremap <buffer>  <c-f> :FormatJSON<cr>
 
 " Remove delay on esc key press
 if has('nvim')
@@ -111,7 +114,9 @@ endif
 
 "nnoremap <C-i> "+po<esc>
 "nnoremap <C-i> 0i<C-j><esc>k"+pddp
-nnoremap <C-i> <esc>o<esc>x"+p
+nnoremap <tab> <esc>o<esc>x"+p
+" NVIM v0.7.0 changed how some input keys were synonymed. <C-i> is now <tab>
+" from urxvt ?
 "inoremap <C-i> <esc>o<esc>x"+p
 nnoremap <A-1> 1gt
 nnoremap <A-2> 2gt
@@ -134,6 +139,7 @@ let g:ctrlp_user_command = '/usr/bin/ag -l --ignore "*\.exe" --ignore "*\.so" --
 
 autocmd Filetype pug        setlocal ts=2 sw=2
 autocmd Filetype stylus,nim setlocal ts=2 sw=2 sts=2
+autocmd Filetype dart,typescript setlocal ts=2 sw=2 sts=2
 autocmd! BufNewFile,BufRead *.links setlocal filetype=markdown
 autocmd! BufNewFile,BufRead *.mjs   setlocal filetype=javascript
 autocmd! BufNewFile,BufRead *.kit   setlocal filetype=html
@@ -207,6 +213,33 @@ let g:ale_pattern_options = {
 highlight ALEWarning ctermbg=DarkMagenta
 highlight ALEError ctermbg=Black
 
+let g:ale_python_flake8_options = '--ignore=E302,E305 --max-line-length=100'
+
+lua << EOF
+require("typescript").setup({
+    disable_commands = false, -- prevent the plugin from creating Vim commands
+    debug = false, -- enable debug logging for commands
+    go_to_source_definition = {
+        fallback = true, -- fall back to standard LSP definition on failure
+    },
+    server = { -- pass options to lspconfig's setup method
+        --on_attach = ...,
+    },
+})
+
+local status, nvim_lsp = pcall(require, "lspconfig")
+if (not status) then return end
+
+nvim_lsp.tsserver.setup {
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    cmd = { "typescript-language-server", "--stdio" }
+}
+require("lsp_lines").setup()
+vim.diagnostic.config({
+virtual_text = false,
+})
+EOF
+
 " avoid escape key
 "inoremap jk <Esc>
 "inoremap kj <Esc>
@@ -218,6 +251,10 @@ highlight ALEError ctermbg=Black
 " clipboard
 map <C-v> "+p
 map <C-c> "+y
+" Wayland Clipboard Support
+xnoremap "+y y:call system("wl-copy", @")<cr>
+nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
+nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
 
 " line shortcuts
 nnoremap <C-a> <Home>
@@ -235,6 +272,19 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-l> <C-w>l
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
+
+" tab navigation: Alt or Ctrl+Shift may not work in terminal:
+" http://vim.wikia.com/wiki/Alternative_tab_navigation
+" Tab navigation like Firefox: only 'open new tab' works in terminal
+nnoremap <C-t>     :tabnew<CR>
+"inoremap <C-t>     <Esc>:tabnew<CR>
+" move to the previous/next tabpage.
+nnoremap <C-j> gt
+nnoremap <C-k> gT
+" Go to last active tab 
+au TabLeave * let g:lasttab = tabpagenr()
+"nnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr>
+"vnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr>
 
 
 autocmd! BufNewFile,BufRead *.cs   setlocal expandtab! list colorcolumn=100

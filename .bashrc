@@ -124,4 +124,14 @@ export ANDROID_HOME=/opt/android-sdk
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 
+# pnpm
+export PNPM_HOME="/home/wan/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+
 [[ -f ~/.bashrc_additions ]] && . ~/.bashrc_additions

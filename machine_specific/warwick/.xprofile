@@ -5,15 +5,26 @@
 # background
 feh --bg-max ~/.config/curwall &
 
-lxqt-notificationd &
+xiccd &
 
-numlockx on &
+#lxqt-notificationd &
+
+xscreensaver &  # started through systemctl already? 
+xidlehook --not-when-audio --not-when-fullscreen --timer 300 "xset s activate" "" &
+xidlehook --not-when-fullscreen --timer 45 "xscreensaver-command --activate" "" &
+xset s 10800 10800
+
+#numlockx on &
 
 # dual-screen SDL fix
 export SDL_VIDEO_FULLSCREEN_HEAD=0
 
-# VR
-export __GL_SYNC_DISPLAY_DEVICE="DVI-I-3"
+# Hardware video acceleration in firefox
+## disabled to see if it fixes overwriting wayland preferrence
+#export MOZ_X11_EGL=1
 
-# Avoid gnome bug
+# VR
+#export __GL_SYNC_DISPLAY_DEVICE="DVI-I-3"
+
+# Avoid gnome bug / remove accessibility bus failed logging
 export NO_AT_BRIDGE=1

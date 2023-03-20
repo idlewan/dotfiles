@@ -16,9 +16,9 @@ Xft.hinting: false
 Xft.lcdfilter: lcddefault
 
 # transparency under wayland:
-#urxvt*depth: 32
-#urxvt*background:	rgba:0000/0000/0200/b000
-urxvt*background:	#000000
+urxvt*depth: 32
+urxvt*background:	rgba:0000/0000/0200/c800
+#urxvt*background:	#000000
 urxvt*foreground:	#FFFFFF
 urxvt*shading: 20
 urxvt*inheritPixmap: true
